@@ -1,0 +1,46 @@
+@startuml
+!pragma layout smetana
+'https://plantuml.com/class-diagram
+
+'deklærerer klasserne
+class Bank
+class TextUI
+class Customer
+class Account
+
+'fortæller hvor klasserne skal refere til
+Main *-- TextUI
+Main *-- Bank
+Bank *-- Customer
+Customer *-- Account
+
+'fortæller at der skal være en main metode som er public "()" skal være med så den ryger ind under metoder
+Main : +static void main(String[])
+
+Customer : -int id
+Customer : -String name
+Customer : -Account account
+Customer : +int getId()
+Customer : +String getName()
+Customer : +Customer(String name)
+Customer : +Account getAccount()
+Customer : -{static} int counter
+Customer : +String toString()
+
+Account : +Account()
+Account : -int balance
+Account : +int getBalance()
+Account : + void setBalance(int amount)
+
+Bank : +Bank(int customerLimit)
+Bank : +int getTotalBanks()
+Bank : +void printCustomer()
+Bank : +Customer registerCustomer(String)
+Bank : +void saveCustomer()
+Bank : -ArrayList<Customer> customers
+Bank : +customerLimit
+
+TextUI : +TextUI()
+TextUI : +String getInput(String msg)
+TextUI : -Scanner scanner
+@enduml
